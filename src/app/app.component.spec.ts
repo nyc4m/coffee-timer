@@ -1,11 +1,14 @@
-import { TestBed } from '@angular/core/testing';
+import { async, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { ElapsedTimePipe } from './elapsed-time.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        ElapsedTimePipe
       ],
     }).compileComponents();
   });
@@ -16,16 +19,22 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'coffee-timer'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('coffee-timer');
-  });
+  describe("on startup", () => {
+    it("should have a button to start the timer", ()=>{
+      const fixture = TestBed.createComponent(AppComponent);
+      fixture.detectChanges()
+      expect(fixture.debugElement.query(By.css('button'))).not.toBeNull()
+    })
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('coffee-timer app is running!');
-  });
+    it("should hide start button on click", () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      fixture.detectChanges()
+
+      const button = fixture.debugElement.query(By.css('#startButton'))
+      button.nativeElement.dispatchEvent(new Event('click'));
+      fixture.detectChanges()
+
+      expect(fixture.debugElement.query(By.css('#startButton'))).toBeNull()
+    })
+  })
 });
