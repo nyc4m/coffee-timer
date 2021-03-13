@@ -1,14 +1,4 @@
-<ng-container>
-  <ng-container *ngIf="started">
-    {{ clock$ | async | elapsedTime}} elapsed time since the beginning
-    <br>
-    <ng-container *ngIf=" shownTimer$ | async as shownTimer">
-      <p>
-        {{ shownTimer | elapsedTime }} since last pour
-      </p>
-      <p *ngIf="shownTimer === 45">YOU NEED TO POOR</p>      
-    </ng-container>
-    <button (click)="onReset()">Reset time</button>
-  </ng-container>
-  <button (click)="onStart()" *ngIf="!started" id="startButton">Start the timer !</button>
-</ng-container>
+<mat-toolbar><span>Coffe timer</span></mat-toolbar>
+<div class="main-container">
+  <app-timer></app-timer>
+</div>
