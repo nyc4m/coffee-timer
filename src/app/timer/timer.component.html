@@ -4,7 +4,7 @@
   <div class="pour-timer-container" *ngIf="shownTimer$ | async as shownTimer">
     <p>seconds since last pour</p>
     <app-clock display="seconds" [time]="shownTimer | secondsToClock"></app-clock>
-    <p *ngIf="timeToPoor$ | async as timeToPoor">YOU NEED TO POOR</p>
+    <p *ngIf="timeToPoor$ | async as timeToPoor">YOU NEED TO POUR</p>
     <button (click)="onReset()" mat-raised-button color="warn">Reset time</button>
   </div>
 </ng-container>

@@ -8,7 +8,7 @@ import { map, take, switchMap, tap } from 'rxjs/operators';
   styleUrls: ['./timer.component.sass'],
 })
 export class TimerComponent {
-  private readonly timeToWait = 3;
+  private readonly timeToWait = 45;
 
   started = false;
 
