@@ -1,13 +1,15 @@
 <ng-container *ngIf="started">
   <app-clock [time]="clock$ | async | secondsToClock"></app-clock>
-  <br />
-  <div class="pour-timer-container" *ngIf="shownTimer$ | async as shownTimer">
+  <div class="pour-timer-container">
     <p>seconds since last pour</p>
-    <app-clock display="seconds" [time]="shownTimer | secondsToClock"></app-clock>
+    <app-clock display="seconds" [time]="shownTimer$ | async | secondsToClock"></app-clock>
     <p *ngIf="timeToPoor$ | async as timeToPoor">YOU NEED TO POUR</p>
-    <button (click)="onReset()" mat-raised-button color="warn">Reset time</button>
+    <div class="actions">
+      <button (click)="onReset()" mat-raised-button color="primary">Reset time</button>
+      <button mat-raised-button color="warn" id="stopButton" (click)="onStop()">stop timer</button>
+    </div>
   </div>
 </ng-container>
-<button mat-raised-button color="primary" (click)="onStart()" *ngIf="!started" id="startButton">
+<button mat-raised-button color="secondary" (click)="onStart()" *ngIf="!started" id="startButton">
   Start the timer !
 </button>

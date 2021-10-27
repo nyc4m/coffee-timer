@@ -42,4 +42,8 @@ export class TimerComponent {
     this.started = true;
     this.timer$.next(this.timer45seconds$.pipe(this.notifyWhenTimeIsDone));
   }
+
+  onStop() {
+    this.started = false;
+  }
 }
