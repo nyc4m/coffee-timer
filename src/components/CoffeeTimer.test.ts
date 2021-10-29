@@ -1,8 +1,14 @@
 import CoffeeTimer from "./CoffeeTimer.vue";
-import { render } from "@testing-library/vue";
+import { render, screen } from "@testing-library/vue";
 
 describe("", () => {
   it("should be ok", () => {
-    render(CoffeeTimer, {});
+    render(CoffeeTimer, {
+      props: {
+        msg: "hello",
+      },
+    });
+
+    expect(screen.getByText());
   });
 });
