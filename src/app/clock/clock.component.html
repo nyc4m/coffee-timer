@@ -1,8 +1,0 @@
-<div class="clock">
-    <ng-container *ngIf="display === 'all' else seconds">
-        <span class="time-digit">{{ time.minutes }}</span>:<span class="time-digit">{{ time.seconds }}</span>
-    </ng-container>
-    <ng-template #seconds>
-        <span class="time-digit">{{time.seconds}}</span>
-    </ng-template>
-</div>
