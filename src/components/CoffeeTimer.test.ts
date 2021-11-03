@@ -18,7 +18,7 @@ describe("Timer Component", () => {
 
     userEvent.click(screen.getByRole("button", { name: "Start Timer" }));
 
-    await expect(screen.findByText("Started")).resolves.toBeVisible();
+    await expect(screen.findByText("Stop")).resolves.toBeVisible();
     await expect(
       screen.queryByRole("button", { name: "Start Timer" })
     ).not.toBeInTheDocument();
