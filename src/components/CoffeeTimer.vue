@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onUnmounted } from 'vue'
+import { ref, onUnmounted, computed } from 'vue'
 import { useClock } from '../composables/useClock'
 
 const started = ref(false)
@@ -24,15 +24,20 @@ function onStop(): void {
     stopSecondaryTimer();
 }
 
+function prefixWith0(value: number) {
+    return value < 10 ? `0${value}` : value
+}
+
+const mainSeconds = computed(() => prefixWith0(mainClock.s))
+const mainMinutes = computed(() => prefixWith0(mainClock.m))
+
 </script>
 
 <template>
     <div class="main-container">
         <h1 class="main-container--title">Cofee Timer</h1>
         <div v-if="started" class="timer">
-            <p
-                class="timer--time"
-            >{{ mainClock.m }} : {{ mainClock.s < 10 ? '0' : '' }}{{ mainClock.s }}</p>
+            <p class="timer--time">{{ mainMinutes }} : {{ mainSeconds }}</p>
             <div
                 class="timer--time"
                 :class="{ 'timer--time-red': secondaryTimer.s >= 45 }"
