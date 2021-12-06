@@ -1,10 +1,6 @@
 import CoffeeTimer from "./CoffeeTimer.vue";
 import userEvent from "@testing-library/user-event";
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from "@testing-library/vue";
+import { render, screen } from "@testing-library/vue";
 
 describe("Timer Component", () => {
   it("should have a button to start the timer", () => {
@@ -19,7 +15,7 @@ describe("Timer Component", () => {
     userEvent.click(screen.getByRole("button", { name: "Start Timer" }));
 
     await expect(screen.findByText("Stop")).resolves.toBeVisible();
-    await expect(
+    expect(
       screen.queryByRole("button", { name: "Start Timer" })
     ).not.toBeInTheDocument();
   });
