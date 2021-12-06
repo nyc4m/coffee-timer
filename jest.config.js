@@ -1,6 +1,10 @@
-// jest.config.js
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-    preset: 'jest-preset-angular',
-    setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
-    transformIgnorePatterns: ['node_modules/(?!@ngrx|angular2-ui-switch|ng-dynamic)']
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  transform: {
+       '^.+\\.vue$': 'vue3-jest',
+  },
+  moduleFileExtensions: ['json', 'js', 'jsx', 'ts', 'tsx', 'vue'],
+  setupFilesAfterEnv: ['./src/jest-setup.ts']
 };
