@@ -71,6 +71,7 @@ const mainMinutes = computed(() => prefixWith0(mainClock.m))
 .timer
     @include globals.flex-column
     align-items: center
+    gap: 2rem
     &--time
         font-size: 2rem
         &-red
