@@ -4,7 +4,7 @@ import { useClock } from '../composables/useClock'
 
 const started = ref(false)
 const { clock: mainClock, start: startMainTimer, stop: stopMainTimer } = useClock()
-const { clock: secondaryTimer, start: startSecondaryTimer, stop: stopSecondaryTimer, reset: resetSecondaryTimer } = useClock()
+const { clock: secondaryTimer, start: startSecondaryTimer, stop: stopSecondaryTimer, reset: resetSecondaryTimer } = useClock(45)
 
 onUnmounted(() => {
     if (started.value) {

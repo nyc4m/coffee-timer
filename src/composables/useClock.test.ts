@@ -58,5 +58,14 @@ describe("Clock composable", () => {
 
       expect(clock.s).toBe(2);
     });
+
+    it('should define a timer that stops after a given time', () => {
+      const {start, clock} = useClock(45)
+      start()
+      jest.advanceTimersByTime(45 * 1000)
+      expect(clock.s).toBe(45)
+      jest.advanceTimersByTime(1000)
+      expect(clock.s).toBe(45)
+    })
   });
 });

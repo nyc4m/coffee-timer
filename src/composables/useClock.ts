@@ -1,11 +1,14 @@
 import { reactive, ref } from "vue";
 
-export function useClock() {
+export function useClock(number?: number) {
   const clock = reactive({ m: 0, s: 0 });
   const timerRef = ref<NodeJS.Timer | null>(null);
   function start() {
     timerRef.value = setInterval(() => {
       clock.s += 1;
+      if(clock.s === number && timerRef.value) {
+        clearInterval(timerRef.value)
+      }
       if (clock.s === 60) {
         clock.m += 1;
         clock.s = 0;
